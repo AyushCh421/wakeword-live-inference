@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.venv/
+venv/
+
+reports/*.csv
+
+recordings/live_tests/*.wav
+
+.DS_Store
+
+Thumbs.db
