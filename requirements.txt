@@ -5,3 +5,4 @@ librosa==0.11.0
 sounddevice==0.5.2
 soundfile==0.13.1
 scipy==1.16.0
+audioread==3.0.1

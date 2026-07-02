@@ -15,28 +15,32 @@ SAMPLE_RATE = 16000
 DURATION = 1
 THRESHOLD = 0.85
 
-RESULTS_FILE = "reports/live_inference_results.csv"
+RECORDINGS_DIR = Path(__file__).resolve().parent.parent / "recordings" / "live_tests"
+REPORTS_DIR = Path(__file__).resolve().parent.parent / "reports"
 
-Path("reports").mkdir(exist_ok=True)
+RESULTS_FILE = REPORTS_DIR / "live_inference_results.csv"
+
+RECORDINGS_DIR.mkdir(parents=True, exist_ok=True)
+REPORTS_DIR.mkdir(parents=True, exist_ok=True)
 
 sample_no = 1
 
 results = []
 
-from pathlib import Path
 
-RECORDINGS_DIR = Path(__file__).resolve().parent.parent / "recordings" / "live_tests"
-REPORTS_DIR = Path(__file__).resolve().parent.parent / "reports"
-
-# -------------------------------
 # Load Model
-# -------------------------------
+
 
 print("Loading Model...")
 
-model = tf.keras.models.load_model(
-    "../model/best_model_hard_negative.keras"
-)
+
+MODEL_PATH = Path(__file__).resolve().parent.parent / "model" / "final_model_hard_negative.keras"
+if not MODEL_PATH.exists():
+    raise FileNotFoundError(
+        f"Model not found: {MODEL_PATH}"
+    )
+
+model = tf.keras.models.load_model(MODEL_PATH)
 
 print("Model Loaded!")
 
@@ -83,7 +87,6 @@ while True:
         features,
         verbose=0
     )[0]
-    print("\nRaw Prediction:", prediction)
 
     wake_prob = float(prediction[1])
     nonwake_prob = float(prediction[0])
