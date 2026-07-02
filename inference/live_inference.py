@@ -25,8 +25,8 @@ results = []
 
 from pathlib import Path
 
-RECORDINGS_DIR = Path("recordings/live_tests")
-RECORDINGS_DIR.mkdir(parents=True, exist_ok=True)
+RECORDINGS_DIR = Path(__file__).resolve().parent.parent / "recordings" / "live_tests"
+REPORTS_DIR = Path(__file__).resolve().parent.parent / "reports"
 
 # -------------------------------
 # Load Model
