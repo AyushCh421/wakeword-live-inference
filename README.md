@@ -30,7 +30,7 @@ reports/
 ## Installation
 
 ```bash
-git clone <repo_url>
+git clone "https://github.com/AyushCh421/wakeword-live-inference"
 
 cd wakeword-live-inference
 
