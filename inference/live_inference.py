@@ -12,7 +12,7 @@ from features import preprocess
 # -------------------------------
 
 SAMPLE_RATE = 16000
-DURATION = 1
+DURATION = 1.5
 THRESHOLD = 0.85
 
 RECORDINGS_DIR = Path(__file__).resolve().parent.parent / "recordings" / "live_tests"
